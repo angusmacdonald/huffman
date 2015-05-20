@@ -1,4 +1,4 @@
-package nyc.angus.huffman;
+package nyc.angus.huffman.distribution;
 
 import java.util.Collections;
 import java.util.HashMap;

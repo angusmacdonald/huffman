@@ -5,7 +5,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.Map;
 
-import nyc.angus.huffman.FrequencyDistribution;
+import nyc.angus.huffman.distribution.FrequencyDistribution;
 
 import org.junit.Test;
 
