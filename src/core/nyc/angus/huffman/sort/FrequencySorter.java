@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 import javax.annotation.Nonnull;
 
 /**
- * 
+ * Utility for sorting character frequencies in increasing order of occurrence.
  */
 public class FrequencySorter {
 
