@@ -15,7 +15,7 @@ public class HuffmanEncodingFactory {
 	 *        Characters ordered by the frequency with which they occur.
 	 * @return Mapping from character to its encoding.
 	 */
-	public static Map<Character, String> create(final PriorityQueue<CharEntry> queue) {
+	public static Map<Character, String> createEncodings(final PriorityQueue<CharEntry> queue) {
 
 		final CharEntry root = createTree(queue);
 
@@ -29,7 +29,7 @@ public class HuffmanEncodingFactory {
 	/**
 	 * Create encoding tree that can be used to generate huffman codes.
 	 */
-	private static CharEntry createTree(final PriorityQueue<CharEntry> queue) {
+	public static CharEntry createTree(final PriorityQueue<CharEntry> queue) {
 		while (queue.size() > 1) {
 			final CharEntry a = queue.poll();
 			final CharEntry b = queue.poll();
@@ -48,6 +48,10 @@ public class HuffmanEncodingFactory {
 	 * this traversal).
 	 */
 	private static void traverseTreeAndStoreHuffmanCodes(final String string, final Map<Character, String> codes, final CharEntry entry) {
+		if (entry == null) {
+			return;
+		}
+
 		if (entry.getChar() != null) {
 			codes.put(entry.getChar(), string);
 		} else {

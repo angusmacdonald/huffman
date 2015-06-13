@@ -15,7 +15,6 @@ public class HuffmanEncoder {
 
 		for (final Character c : str.toCharArray()) {
 			buf.append(codes.get(c));
-			buf.append("|");
 		}
 
 		return buf.toString();

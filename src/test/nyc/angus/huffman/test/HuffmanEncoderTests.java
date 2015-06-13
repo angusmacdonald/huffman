@@ -38,7 +38,7 @@ public class HuffmanEncoderTests {
 
 		final PriorityQueue<CharEntry> result = sorter.generateFrequencyTree(frequencies);
 
-		final Map<Character, String> encoding = HuffmanEncodingFactory.create(result);
+		final Map<Character, String> encoding = HuffmanEncodingFactory.createEncodings(result);
 
 		encoder = new HuffmanEncoder(encoding);
 	}
