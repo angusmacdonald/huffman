@@ -41,16 +41,8 @@ public class CharEntry implements Comparable<CharEntry> {
 		return leftChild;
 	}
 
-	public void setLeftChild(final CharEntry leftChild) {
-		this.leftChild = leftChild;
-	}
-
 	public CharEntry getRightChild() {
 		return rightChild;
-	}
-
-	public void setRightChild(final CharEntry rightChild) {
-		this.rightChild = rightChild;
 	}
 
 	public Double getFrequency() {

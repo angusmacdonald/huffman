@@ -8,6 +8,10 @@ import nyc.angus.huffman.sort.CharEntry;
 
 public class HuffmanEncodingFactory {
 
+	private HuffmanEncodingFactory() {
+		// Utility class, should not be instantiated.
+	}
+
 	/**
 	 * Return a map of characters to the code that should be used for the character.
 	 * 
