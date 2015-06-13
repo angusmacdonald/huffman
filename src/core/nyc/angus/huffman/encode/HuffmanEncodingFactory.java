@@ -1,8 +1,10 @@
-package nyc.angus.huffman.sort;
+package nyc.angus.huffman.encode;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.PriorityQueue;
+
+import nyc.angus.huffman.sort.CharEntry;
 
 public class HuffmanEncodingFactory {
 

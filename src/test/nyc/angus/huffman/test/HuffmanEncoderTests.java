@@ -11,10 +11,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.PriorityQueue;
 
+import nyc.angus.huffman.encode.HuffmanEncoder;
+import nyc.angus.huffman.encode.HuffmanEncodingFactory;
 import nyc.angus.huffman.sort.CharEntry;
 import nyc.angus.huffman.sort.FrequencySorter;
-import nyc.angus.huffman.sort.HuffmanEncoder;
-import nyc.angus.huffman.sort.HuffmanEncodingFactory;
 
 import org.junit.Before;
 import org.junit.Test;

@@ -1,4 +1,4 @@
-package nyc.angus.huffman.sort;
+package nyc.angus.huffman.encode;
 
 import java.util.Map;
 
