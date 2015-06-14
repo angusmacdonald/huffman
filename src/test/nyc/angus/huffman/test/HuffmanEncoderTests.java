@@ -14,8 +14,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.PriorityQueue;
 
-import nyc.angus.huffman.encode.HuffmanEncoder;
-import nyc.angus.huffman.encode.HuffmanEncodingFactory;
+import nyc.angus.huffman.encode.Encoder;
+import nyc.angus.huffman.encode.EncoderFactory;
 import nyc.angus.huffman.sort.CharEntry;
 import nyc.angus.huffman.sort.FrequencySorter;
 
@@ -23,13 +23,13 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Tests of {@link HuffmanEncodingFactory}.
+ * Tests of {@link EncoderFactory}.
  */
 public class HuffmanEncoderTests {
 
 	private final Map<Character, Double> frequencies = new HashMap<>();
 
-	private HuffmanEncoder encoder;
+	private Encoder encoder;
 
 	@Before
 	public void setUp() {
@@ -41,9 +41,9 @@ public class HuffmanEncoderTests {
 
 		final PriorityQueue<CharEntry> result = sorter.generateFrequencyTree(frequencies);
 
-		final Map<Character, String> encoding = HuffmanEncodingFactory.createEncodings(result);
+		final Map<Character, String> encoding = EncoderFactory.createEncodings(result);
 
-		encoder = new HuffmanEncoder(encoding);
+		encoder = new Encoder(encoding);
 	}
 
 	@Test
@@ -59,7 +59,7 @@ public class HuffmanEncoderTests {
 	@Test
 	public void testConstructorIsPrivate() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException,
 			InstantiationException {
-		final Constructor<HuffmanEncodingFactory> constructor = HuffmanEncodingFactory.class.getDeclaredConstructor();
+		final Constructor<EncoderFactory> constructor = EncoderFactory.class.getDeclaredConstructor();
 		assertTrue(Modifier.isPrivate(constructor.getModifiers()));
 		constructor.setAccessible(true);
 		constructor.newInstance();

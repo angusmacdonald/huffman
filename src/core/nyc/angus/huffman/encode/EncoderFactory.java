@@ -6,9 +6,9 @@ import java.util.PriorityQueue;
 
 import nyc.angus.huffman.sort.CharEntry;
 
-public class HuffmanEncodingFactory {
+public class EncoderFactory {
 
-	private HuffmanEncodingFactory() {
+	private EncoderFactory() {
 		// Utility class, should not be instantiated.
 	}
 

@@ -5,10 +5,10 @@ import nyc.angus.huffman.sort.CharEntry;
 /**
  * Decodes streams off huffman encoded characters.
  */
-public class HuffmanDecoder {
+public class Decoder {
 	private final CharEntry root;
 
-	public HuffmanDecoder(final CharEntry root) {
+	public Decoder(final CharEntry root) {
 		this.root = root;
 	}
 
