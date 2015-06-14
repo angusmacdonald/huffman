@@ -16,7 +16,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Tests of {@link HuffmanEncoder}
+ * Tests of {@link HuffmanEncoder}.
  */
 public class EndToEndEncoding {
 
@@ -25,6 +25,11 @@ public class EndToEndEncoding {
 	@Before
 	public void setUp() {
 		encoder = HuffmanEncoderFactory.createEncoder();
+	}
+
+	@Test
+	public void emptyString() {
+		assertDecodingMatchesEncoding("");
 	}
 
 	@Test
@@ -50,11 +55,6 @@ public class EndToEndEncoding {
 	@Test
 	public void oneMillionCharacters() {
 		assertDecodingMatchesEncoding(RandomStringUtils.random(1000000));
-	}
-
-	@Test
-	public void emptyString() {
-		assertDecodingMatchesEncoding("");
 	}
 
 	@Test
