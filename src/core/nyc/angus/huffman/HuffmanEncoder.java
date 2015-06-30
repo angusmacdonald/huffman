@@ -3,6 +3,8 @@ package nyc.angus.huffman;
 import java.util.Map;
 import java.util.PriorityQueue;
 
+import javax.inject.Inject;
+
 import nyc.angus.huffman.distribution.FrequencyDistribution;
 import nyc.angus.huffman.encode.Decoder;
 import nyc.angus.huffman.encode.Encoder;
@@ -18,6 +20,7 @@ public class HuffmanEncoder {
 	private final FrequencyDistribution dist;
 	private final FrequencySorter sorter;
 
+	@Inject
 	protected HuffmanEncoder(final FrequencyDistribution dist, final FrequencySorter sorter) {
 		this.dist = dist;
 		this.sorter = sorter;

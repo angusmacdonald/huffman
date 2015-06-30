@@ -16,6 +16,10 @@ import com.google.common.collect.Multiset;
  */
 public class FrequencyDistribution {
 
+	public FrequencyDistribution() {
+		// Default constructor.
+	}
+
 	public Map<Character, Double> calculateFrequency(final String string) {
 		if (string == null || string.isEmpty()) {
 			return Collections.emptyMap();

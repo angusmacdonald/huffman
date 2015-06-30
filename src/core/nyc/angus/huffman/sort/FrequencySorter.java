@@ -12,6 +12,10 @@ import javax.annotation.Nonnull;
  */
 public class FrequencySorter {
 
+	public FrequencySorter() {
+		// Default constructor.
+	}
+
 	public PriorityQueue<CharEntry> generateFrequencyTree(@Nonnull final Map<Character, Double> frequencies) {
 		final Set<CharEntry> asCharEntry = frequencies.entrySet().stream() //
 				.map(e -> new CharEntry(e.getKey(), e.getValue())) //

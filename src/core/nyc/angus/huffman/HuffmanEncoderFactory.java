@@ -1,7 +1,8 @@
 package nyc.angus.huffman;
 
-import nyc.angus.huffman.distribution.FrequencyDistribution;
-import nyc.angus.huffman.sort.FrequencySorter;
+import javax.inject.Singleton;
+
+import dagger.Component;
 
 /**
  * Factory for creating an instance of {@link HuffmanEncoder}.
@@ -12,10 +13,13 @@ public class HuffmanEncoderFactory {
 		// Should not be instantiated.
 	}
 
-	public static HuffmanEncoder createEncoder() {
-		final FrequencyDistribution dist = new FrequencyDistribution();
-		final FrequencySorter sorter = new FrequencySorter();
+	@Singleton
+	@Component(modules = { FrequencyDistributionModule.class })
+	public interface EncoderBuilder {
+		HuffmanEncoder make();
+	}
 
-		return new HuffmanEncoder(dist, sorter);
+	public static HuffmanEncoder createEncoder() {
+		return DaggerHuffmanEncoderFactory_EncoderBuilder.builder().build().make();
 	}
 }
