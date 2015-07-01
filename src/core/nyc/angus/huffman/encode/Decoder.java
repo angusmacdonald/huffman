@@ -1,5 +1,7 @@
 package nyc.angus.huffman.encode;
 
+import java.util.List;
+
 import nyc.angus.huffman.sort.CharEntry;
 
 /**
@@ -12,25 +14,45 @@ public class Decoder {
 		this.root = root;
 	}
 
-	public String decode(final String encodedMessage) {
-		final StringBuilder message = new StringBuilder();
+	public String decode(final List<Long> encoded, final int totalLength) {
+		if (totalLength == 0) {
+			return "";
+		}
 
-		CharEntry element = root;
+		final StringBuilder result = new StringBuilder();
 
-		for (final char c : encodedMessage.toCharArray()) {
+		CharEntry treeEl = root;
 
-			if (c == '0') {
-				element = element.getLeftChild();
-			} else if (c == '1') {
-				element = element.getRightChild();
-			}
+		int lengthParsed = 0;
 
-			if (element.getLeftChild() == null && element.getRightChild() == null) {
-				message.append(element.getChar());
-				element = root;
+		for (final long element : encoded) {
+
+			for (int y = 0; y < Encoder.SIZE; y++) {
+				final long val = (element >> y) & 1l;
+
+				treeEl = traverseEncodingTree(result, treeEl, val);
+
+				if (++lengthParsed == totalLength) {
+					return result.toString();
+				}
 			}
 		}
 
-		return message.toString();
+		return null;
+	}
+
+	private CharEntry traverseEncodingTree(final StringBuilder result, CharEntry treeEl, final long val) {
+		if (val == 0) {
+			treeEl = treeEl.getLeftChild();
+		} else if (val == 1) {
+			treeEl = treeEl.getRightChild();
+		}
+
+		if (treeEl.getLeftChild() == null && treeEl.getRightChild() == null) {
+			result.append(treeEl.getChar());
+			treeEl = root;
+		}
+
+		return treeEl;
 	}
 }

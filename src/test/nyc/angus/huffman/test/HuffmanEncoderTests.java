@@ -48,7 +48,7 @@ public class HuffmanEncoderTests {
 
 	@Test
 	public void encodeThree() {
-		assertTrue(encoder.encode("a").length() < encoder.encode("b").length());
+		assertTrue(encoder.encode("a").getLeft() < encoder.encode("b").getLeft());
 	}
 
 	@Test

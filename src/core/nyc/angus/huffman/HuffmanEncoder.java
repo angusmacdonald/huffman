@@ -1,5 +1,6 @@
 package nyc.angus.huffman;
 
+import java.util.List;
 import java.util.Map;
 import java.util.PriorityQueue;
 
@@ -9,6 +10,8 @@ import nyc.angus.huffman.encode.Encoder;
 import nyc.angus.huffman.encode.EncoderFactory;
 import nyc.angus.huffman.sort.CharEntry;
 import nyc.angus.huffman.sort.FrequencySorter;
+
+import org.apache.commons.lang3.tuple.Pair;
 
 /**
  * Main class for encoding messages with the huffman encoder. Set up with the {@link HuffmanEncoderFactory} utility.
@@ -33,6 +36,7 @@ public class HuffmanEncoder {
 		final Encoder encoder = new Encoder(encoding);
 		final Decoder decoder = new Decoder(EncoderFactory.createTree(new PriorityQueue<CharEntry>(result)));
 
-		return new EncodingResult(encoder.encode(message), decoder);
+		final Pair<Integer, List<Long>> encodedMessage = encoder.encode(message);
+		return new EncodingResult(encodedMessage.getRight(), encodedMessage.getLeft(), decoder);
 	}
 }

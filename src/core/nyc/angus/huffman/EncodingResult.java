@@ -1,5 +1,7 @@
 package nyc.angus.huffman;
 
+import java.util.List;
+
 import nyc.angus.huffman.encode.Decoder;
 
 /**
@@ -7,20 +9,26 @@ import nyc.angus.huffman.encode.Decoder;
  */
 public class EncodingResult {
 
-	private final String message;
+	private final List<Long> message;
 	private final Decoder decoder;
+	private final int lengthOfMessage;
 
-	public EncodingResult(final String message, final Decoder decoder) {
+	public EncodingResult(final List<Long> message, final int lengthOfMessage, final Decoder decoder) {
 		this.message = message;
+		this.lengthOfMessage = lengthOfMessage;
 		this.decoder = decoder;
 	}
 
-	public String getMessage() {
+	public List<Long> getMessage() {
 		return message;
 	}
 
 	public Decoder getDecoder() {
 		return decoder;
+	}
+
+	public int getLengthOfMessage() {
+		return lengthOfMessage;
 	}
 
 }

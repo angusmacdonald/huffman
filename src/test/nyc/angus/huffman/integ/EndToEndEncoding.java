@@ -69,7 +69,7 @@ public class EndToEndEncoding {
 	private void assertDecodingMatchesEncoding(final String messageToEncode) {
 		final EncodingResult result = encoder.encode(messageToEncode);
 
-		final String decodedMessage = result.getDecoder().decode(result.getMessage());
+		final String decodedMessage = result.getDecoder().decode(result.getMessage(), result.getLengthOfMessage());
 
 		assertEquals(messageToEncode, decodedMessage);
 	}
