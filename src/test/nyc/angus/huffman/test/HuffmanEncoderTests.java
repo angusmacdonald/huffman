@@ -53,7 +53,7 @@ public class HuffmanEncoderTests {
 
 	@Test
 	public void emptyString() {
-		assertEquals("", encoder.encode(""));
+		assertEquals(new Integer(0), encoder.encode("").getLeft());
 	}
 
 	@Test
