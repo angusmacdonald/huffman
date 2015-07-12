@@ -1,6 +1,5 @@
 package nyc.angus.huffman;
 
-import java.util.List;
 import java.util.Map;
 import java.util.PriorityQueue;
 
@@ -36,7 +35,7 @@ public class HuffmanEncoder {
 		final Encoder encoder = new Encoder(encoding);
 		final Decoder decoder = new Decoder(EncoderFactory.createTree(new PriorityQueue<CharEntry>(result)));
 
-		final Pair<Integer, List<Long>> encodedMessage = encoder.encode(message);
+		final Pair<Integer, byte[]> encodedMessage = encoder.encode(message);
 		return new EncodingResult(encodedMessage.getRight(), encodedMessage.getLeft(), decoder);
 	}
 }

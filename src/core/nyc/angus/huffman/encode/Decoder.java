@@ -1,6 +1,6 @@
 package nyc.angus.huffman.encode;
 
-import java.util.List;
+import java.util.BitSet;
 
 import nyc.angus.huffman.sort.CharEntry;
 
@@ -14,27 +14,27 @@ public class Decoder {
 		this.root = root;
 	}
 
-	public String decode(final List<Long> encoded, final int totalLength) {
+	public String decode(final byte[] message, final int totalLength) {
 		if (totalLength == 0) {
 			return "";
 		}
 
 		final StringBuilder result = new StringBuilder();
 
+		final BitSet encoded = BitSet.valueOf(message);
+
 		CharEntry treeEl = root;
 
 		int lengthParsed = 0;
 
-		for (final long element : encoded) {
+		for (int i = 0; i < totalLength; i++) {
 
-			for (int y = 0; y < Encoder.SIZE; y++) {
-				final long val = (element >> y) & 1l;
+			final long val = encoded.get(i) ? 1l : 0l;
 
-				treeEl = traverseEncodingTree(result, treeEl, val);
+			treeEl = traverseEncodingTree(result, treeEl, val);
 
-				if (++lengthParsed == totalLength) {
-					return result.toString();
-				}
+			if (++lengthParsed == totalLength) {
+				return result.toString();
 			}
 		}
 
