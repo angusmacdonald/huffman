@@ -23,6 +23,13 @@ public class Decoder {
 
 		final BitSet encoded = BitSet.valueOf(message);
 
+		return decodeWithTreeTraversal(totalLength, result, encoded);
+	}
+
+	/**
+	 * Traverse the encoding tree, iterating through the encoded message and constructing the decoded message.
+	 */
+	private String decodeWithTreeTraversal(final int totalLength, final StringBuilder result, final BitSet encoded) {
 		CharEntry treeEl = root;
 
 		int lengthParsed = 0;
@@ -41,6 +48,9 @@ public class Decoder {
 		return null;
 	}
 
+	/**
+	 * Perform a single move in the traversal of the encoding tree.
+	 */
 	private CharEntry traverseEncodingTree(final StringBuilder result, CharEntry treeEl, final long val) {
 		if (val == 0) {
 			treeEl = treeEl.getLeftChild();
