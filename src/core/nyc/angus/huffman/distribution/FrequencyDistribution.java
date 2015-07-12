@@ -4,9 +4,6 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.IntStream;
-import java.util.stream.Stream;
-
-import javax.annotation.Nonnull;
 
 import com.google.common.collect.HashMultiset;
 import com.google.common.collect.Multiset;
@@ -25,13 +22,9 @@ public class FrequencyDistribution {
 			return Collections.emptyMap();
 		}
 
-		final Multiset<Character> occurrences = countOccurencesFromString(string);
+		final Multiset<Character> occurrences = countOccurencesFromStream(string.chars());
 
 		return calculateFrequency(string, occurrences);
-	}
-
-	private Multiset<Character> countOccurencesFromString(@Nonnull final String string) {
-		return countOccurencesFromStream(string.chars());
 	}
 
 	private Multiset<Character> countOccurencesFromStream(final IntStream charStream) {
@@ -46,11 +39,8 @@ public class FrequencyDistribution {
 	private Map<Character, Double> calculateFrequency(final String string, final Multiset<Character> occurrences) {
 		final Map<Character, Double> distribution = new HashMap<>();
 
-		final Stream<Character> stream = occurrences.stream();
-		stream.//
-		forEach(//
-		c -> distribution.put(c, occurrences.count(c) / Double.valueOf(string.length())) //
-		);
+		occurrences.stream()//
+				.forEach(c -> distribution.put(c, occurrences.count(c) / Double.valueOf(string.length())));
 
 		return distribution;
 	}
